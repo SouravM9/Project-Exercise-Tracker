@@ -1,0 +1,17 @@
+1. https://stackoverflow.com/questions/22244421/how-to-create-mongoose-schema-with-array-of-object-ids
+
+2. https://stackoverflow.com/questions/19695058/how-to-define-object-in-array-in-mongoose-schema-correctly-with-2d-geo-index
+
+3. https://stackoverflow.com/questions/33049707/push-items-into-mongo-array-via-mongoose
+
+4. https://stackoverflow.com/questions/7042340/error-cant-set-headers-after-they-are-sent-to-the-client
+
+5. https://stackoverflow.com/questions/39946436/findoneandupdate-increment-instead-of-update-in-mongoose
+
+6. https://stackoverflow.com/questions/8559147/how-can-i-get-date-in-application-run-by-node-js
+
+7. https://stackoverflow.com/questions/5619202/parsing-a-string-to-a-date-in-javascript
+
+8. https://www.w3schools.com/jsref/jsref_todatestring.asp
+
+9. 
