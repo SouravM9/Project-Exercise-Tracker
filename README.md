@@ -1,5 +1,11 @@
 # Exercise Tracker
-This is an assignment for Backend & API Course by FreeCodeCamp.
+This is one of the five assignment for Backend & API Course by FreeCodeCamp.
+
+# User Story
+* Create a user by submitting username to /api/users and an object with _id and username will be returned.
+* Get request to api/users will return an array of all users.
+* Posting exercise data userId, description, duration, and optionally date to /api/users/_id/exercises.
+* Get reqest to api/users/_id/logs will return user's all exercise logs along with the count.
 
 # Test Cases
 - You should provide your own project, not the example URL.

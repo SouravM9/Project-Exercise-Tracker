@@ -1,59 +1,100 @@
-* {
-  box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap");
 
 body {
-  font-family:sans-serif;
-  margin: 25px;
-  color: #222;
-  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  background: linear-gradient(45deg, greenyellow, dodgerblue);
+  font-family: "Sansita Swashed", cursive;
+}
+
+.container {
+  position: relative;
+  padding: 50px 50px;
+  background: #fff;
+  border-radius: 10px;
+
 }
 
 h1 {
+  font-size: 2em;
+  border-left: 5px solid dodgerblue;
+  padding: 10px;
+  color: #000;
+  letter-spacing: 5px;
+  margin-bottom: 60px;
   font-weight: bold;
-  
+  padding-left: 10px;
 }
 
-p {
-  max-width: 900px;
+p {}
+
+form {}
+
+input {}
+
+.inputbox {
+  position: relative;
+  width: 300px;
+  height: 50px;
+  margin-bottom: 20px;
 }
 
-form {
-  margin-bottom: 25px;
-  padding: 15px;
-  background-color: #87D37C;
-  display: inline-block;
+.inputbox input {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 340px;
-  border-radius: 5px;
+  border: 2px solid #000;
+  outline: none;
+  background: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1.2em;
 }
 
-input {
-  display: block;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-  font-size: 16px;
+.container .inputbox:last-child {
+  margin-bottom: 0;
 }
 
 input[type=submit] {
-  font-size: 16px;
-  border-radius: 3px;
-  background-color: #E4F1FE;
-  border: 1px solid grey;
-  box-shadow: 2px 2px #999;
-  cursor: pointer;
+  width: 50%;
+  background: dodgerblue;
+  color: #fff;
+  border: #fff;
 }
 
 input[type=submit]:hover {
-  background-color: #FFFEC4;
+  background: linear-gradient(45deg, greenyellow, dodgerblue);
 }
 
-code {
-  font-family: monospace;
-  font-size: 1.2em;
-  background-color: #FFFEC4;
-  padding: 2px;
+.center .inputbox span {
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  font-size: 1em;
+  transition: 0.6s;
+  font-family: sans-serif;
+}
+
+.container .inputbox input:focus~span,
+.container .inputbox input:valid~span {
+  transform: translateX(-13px) translateY(-35px);
+  font-size: 1em;
+}
+
+code {}
+
+
+.copyright {
+  padding: 2rem 0 0 0;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--color-3);
+  text-align: center;
+  border-top: 1px solid var(--color-3);
 }
