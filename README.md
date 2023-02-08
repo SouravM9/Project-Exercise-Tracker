@@ -1,11 +1,15 @@
 # Exercise Tracker
-This is one of the five assignment for Backend & API Course by FreeCodeCamp.
+This is one of the five assignments for Backend & API Course by FreeCodeCamp.
+
+<a href="https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/exercise-tracker">
+Project Exercise Tracker FreeCodeCamp
+</a>
 
 # User Story
 * Create a user by submitting username to /api/users and an object with _id and username will be returned.
 * Get request to api/users will return an array of all users.
 * Posting exercise data userId, description, duration, and optionally date to /api/users/_id/exercises.
-* Get reqest to api/users/_id/logs will return user's all exercise logs along with the count.
+* Get request to api/users/_id/logs will return user's all exercise logs along with the count.
 
 # Test Cases
 - You should provide your own project, not the example URL.
@@ -24,3 +28,12 @@ This is one of the five assignment for Backend & API Course by FreeCodeCamp.
 - The duration property of any object in the log array that is returned from GET /api/users/:_id/logs should be a number.
 - The date property of any object in the log array that is returned from GET /api/users/:_id/logs should be a string. Use the dateString format of the Date API.
 - You can add from, to and limit parameters to a GET /api/users/:_id/logs request to retrieve part of the log of any user. from and to are dates in yyyy-mm-dd format. limit is an integer of how many logs to send back.
+
+## Demo
+
+<img src="/demo/ExerciseTracker_Demo.gif">
+
+
+# References
+
+Style inspired by https://codepen.io/Bilal1909/pen/KKzjgzR
