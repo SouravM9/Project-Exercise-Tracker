@@ -32,32 +32,28 @@ mongoose.connection.on('error', (err) => {
 
 const { Schema } = mongoose;
 
-var exerciseUsersSchema = new Schema({
+const userSchema = new Schema({
 	username: { type: String, unique: true, required: true }
 });
 
-var ExerciseUsers = mongoose.model('ExerciseUsers', exerciseUsersSchema);
+const Users = mongoose.model('Users', userSchema);
 
-var exercisesSchema = new Schema({
+const exerciseSchema = new Schema({
 	userId: { type: String, required: true },
 	description: { type: String, required: true },
 	duration: { type: Number, min: 1, required: true },
 	date: { type: Date, default: Date.now }
 });
 
-var Exercises = mongoose.model('Exercises', exercisesSchema);
+const Exercises = mongoose.model('Exercises', exerciseSchema);
 
 app.post('/api/users', function (req, res) {
-	if (req.body.username === '') {
-		return res.json({ error: 'username is required' });
-	}
-
 	let username = req.body.username;
 	let _id = '';
 
-	ExerciseUsers.findOne({ username: username }, function (err, data) {
+	Users.findOne({ username: username }, function (err, data) {
 		if (!err && data === null) {
-			let newUser = new ExerciseUsers({
+			let newUser = new Users({
 				username: username
 			});
 
@@ -78,7 +74,7 @@ app.post('/api/users', function (req, res) {
 });
 
 app.get('/api/users', function (req, res) {
-	ExerciseUsers.find({}, function (err, data) {
+	Users.find({}, function (err, data) {
 		if (!err) {
 			return res.json(data);
 		}
@@ -86,32 +82,12 @@ app.get('/api/users', function (req, res) {
 });
 
 app.post('/api/users/:_id/exercises', function (req, res) {
-	if (req.params._id === '0') {
-		return res.json({ error: '_id is required' });
-	}
-
-	if (req.body.description === '') {
-		return res.json({ error: 'description is required' });
-	}
-
-	if (req.body.duration === '') {
-		return res.json({ error: 'duration is required' });
-	}
-
 	let userId = req.params._id;
 	let description = req.body.description;
 	let duration = parseInt(req.body.duration);
-	let date = (req.body.date !== undefined ? new Date(req.body.date) : new Date());
+	let date = (req.body.date !== '' ? new Date(req.body.date) : new Date());
 
-	if (isNaN(duration)) {
-		return res.json({ error: 'duration is not a number' });
-	}
-
-	if (date == 'Invalid Date') {
-		return res.json({ error: 'date is invalid' });
-	}
-
-	ExerciseUsers.findById(userId, function (err, data) {
+	Users.findById(userId, function (err, data) {
 		if (!err && data !== null) {
 			let newExercise = new Exercises({
 				userId: userId,
@@ -175,21 +151,21 @@ app.get('/api/users/:_id/logs', function (req, res) {
 		return res.json({ error: 'limit is not a number' });
 	}
 
-	ExerciseUsers.findById(userId, function (err, data) {
+	Users.findById(userId, function (err, data) {
 		if (!err && data !== null) {
 			Exercises.find(findConditions).sort({ date: 'asc' }).limit(limit).exec(function (err2, data2) {
 				if (!err2) {
 					return res.json({
 						_id: data['_id'],
 						username: data['username'],
+						count: data2.length,
 						log: data2.map(function (e) {
 							return {
 								description: e.description,
 								duration: e.duration,
 								date: new Date(e.date).toDateString()
 							};
-						}),
-						count: data2.length
+						})
 					});
 				}
 			});
@@ -199,23 +175,20 @@ app.get('/api/users/:_id/logs', function (req, res) {
 	});
 });
 
-// Not found middleware
+
 app.use((req, res, next) => {
 	return next({ status: 404, message: 'not found' });
 });
 
-// Error handling middleware
+
 app.use((err, req, res, next) => {
 	let errCode, errMessage;
 
 	if (err.errors) {
-		// mongoose validation error
-		errCode = 400; // bad request
+		errCode = 400; 
 		const keys = Object.keys(err.errors);
-		// report the first validation error
 		errMessage = err.errors[keys[0]].message;
 	} else {
-		// generic or custom error
 		errCode = err.status || 500;
 		errMessage = err.message || 'Internal Server Error';
 	}
