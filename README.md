@@ -33,7 +33,7 @@ Project Exercise Tracker FreeCodeCamp
 
 <img src="/demo/ExerciseTracker_Demo.gif">
 
-
+Hosted on <a href='https://exercise-tracker-sm9.onrender.com/'>Exercise Tracker</a>
 # References
 
 Style inspired by https://codepen.io/Bilal1909/pen/KKzjgzR
